@@ -19,28 +19,46 @@ import {
 } from "lucide-react";
 
 const crawlPages = [
-  "API Authentication",
-  "Rate limits",
-  "Markdown export",
-  "Browser rendering",
-  "Changelog",
+  "Company overview",
+  "Pricing notes",
+  "Product changelog",
+  "Support docs",
+  "Open questions",
 ];
 
 const features = [
   {
-    icon: Search,
-    title: "Crawl the source",
-    text: "Start from a docs page, product site, blog, or help center and collect the pages that matter.",
+    icon: FolderOpen,
+    title: "Choose a vault folder",
+    text: "Send each capture to a project, client, or research folder instead of a generic export directory.",
   },
   {
     icon: FileText,
-    title: "Write clean notes",
-    text: "Save each page as Markdown with frontmatter, original URLs, titles, and a generated crawl index.",
+    title: "Create useful notes",
+    text: "Write one Markdown note per page, plus an index note with source URLs, crawl metadata, and backlinks.",
   },
   {
     icon: RefreshCcw,
-    title: "Recrawl later",
-    text: "Refresh a crawl when the site changes and keep a useful trail of what was captured.",
+    title: "Refresh the research",
+    text: "Recrawl a source later and keep a trail of what changed without leaving your local knowledge system.",
+  },
+];
+
+const positioning = [
+  {
+    icon: BookOpenText,
+    title: "A capture layer",
+    text: "Crawlbar is for saving a website into the place where you already think and write.",
+  },
+  {
+    icon: Search,
+    title: "A review surface",
+    text: "Preview discovered pages, skip the noise, and keep the notes that belong in the vault.",
+  },
+  {
+    icon: Archive,
+    title: "A source archive",
+    text: "Keep source links, dates, titles, and optional HTML so future-you knows where every note came from.",
   },
 ];
 
@@ -52,18 +70,19 @@ const principles = [
 ];
 
 const useCases = [
-  "Vendor docs snapshots",
-  "Client research folders",
-  "Competitive research",
-  "Tutorial and course capture",
-  "AI-ready Markdown context",
-  "Link rot protection",
+  "Docs saved beside a project",
+  "Client site research folders",
+  "Competitive positioning notes",
+  "Changelog watchlists",
+  "Course and tutorial libraries",
+  "AI context packs from your vault",
 ];
 
 function App() {
   return (
     <main className="min-h-dvh isolate overflow-hidden bg-stone-50 font-sans text-neutral-950 antialiased">
       <Hero />
+      <PositioningSection />
       <Workflow />
       <ObsidianSection />
       <TrustSection />
@@ -86,6 +105,9 @@ function Header() {
         <div className="hidden items-center gap-7 text-sm font-medium text-neutral-700 sm:flex">
           <a className="hover:text-neutral-950" href="#obsidian">
             Obsidian
+          </a>
+          <a className="hover:text-neutral-950" href="#positioning">
+            Why
           </a>
           <a className="hover:text-neutral-950" href="#privacy">
             BYOC
@@ -118,27 +140,27 @@ function Hero() {
       <div className="relative z-10 mx-auto flex min-h-[calc(92dvh-6rem)] max-w-7xl items-center px-5 pb-20 sm:px-8 lg:px-10">
         <div className="max-w-[58ch] pb-16">
           <p className="font-mono text-sm/6 font-medium tracking-wide text-emerald-800 uppercase">
-            Free open source Mac app
+            Obsidian web capture
           </p>
           <h1 className="mt-5 max-w-[10ch] text-balance text-6xl font-semibold tracking-tight text-neutral-950 sm:text-7xl lg:text-8xl">
             Crawlbar
           </h1>
-          <p className="mt-6 max-w-[36ch] text-pretty text-xl/8 text-neutral-700 sm:text-lg/8">
-            Save websites into Obsidian as clean, linked Markdown notes using your own Cloudflare account.
+          <p className="mt-6 max-w-[39ch] text-pretty text-xl/8 text-neutral-700 sm:text-lg/8">
+            Turn websites into structured Obsidian research folders you can search, annotate, link, and reuse.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
               href="#obsidian"
               className="inline-flex items-center justify-center gap-2 rounded-md bg-neutral-950 px-4 py-3 text-base font-medium text-white ring-1 ring-neutral-950 transition hover:bg-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 sm:text-sm"
             >
-              See the workflow
+              See the vault workflow
               <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
             </a>
             <a
               href="#privacy"
               className="inline-flex items-center justify-center gap-2 rounded-md px-4 py-3 text-base font-medium text-neutral-800 transition hover:text-neutral-950 sm:text-sm"
             >
-              Bring your own Cloudflare
+              Local files, your Cloudflare
             </a>
           </div>
           <div className="mt-10 sm:hidden">
@@ -155,26 +177,26 @@ function MobileProductScene() {
   return (
     <div className="rounded-lg bg-neutral-950 p-4 text-stone-100 shadow-xl ring-1 ring-black/10" aria-hidden="true">
       <div className="flex items-center justify-between border-b border-white/10 pb-3">
-        <span className="text-base font-medium">Obsidian / Crawlbar</span>
+        <span className="text-base font-medium">Project Research</span>
         <span className="rounded-md bg-emerald-400 px-2 py-1 font-mono text-sm font-medium text-neutral-950">
           saved
         </span>
       </div>
       <div className="pt-4">
-        <p className="font-mono text-sm/6 text-emerald-300">source: example.com/docs</p>
-        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-balance">Website research</h2>
+        <p className="font-mono text-sm/6 text-emerald-300">source: example.com</p>
+        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-balance">Client website notes</h2>
         <div className="mt-4 space-y-2 text-base/7 text-stone-300">
           <div className="flex items-baseline gap-2">
             <FileText className="size-4 h-lh shrink-0 stroke-amber-300" />
-            <span>API Authentication.md</span>
+            <span>Company overview.md</span>
           </div>
           <div className="flex items-baseline gap-2">
             <FileText className="size-4 h-lh shrink-0 stroke-amber-300" />
-            <span>Rate limits.md</span>
+            <span>Pricing notes.md</span>
           </div>
           <div className="flex items-baseline gap-2">
             <FileText className="size-4 h-lh shrink-0 stroke-amber-300" />
-            <span>Crawl Index.md</span>
+            <span>Source index.md</span>
           </div>
         </div>
       </div>
@@ -199,23 +221,23 @@ function ProductScene() {
       <div className="absolute top-20 right-0 w-[26rem] rounded-lg bg-neutral-950 p-4 text-stone-100 shadow-2xl ring-1 ring-white/10">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-base font-medium sm:text-sm">New crawl</p>
-            <p className="text-base/7 text-stone-400 sm:text-sm/6">Websites to Obsidian</p>
+            <p className="text-base font-medium sm:text-sm">New capture</p>
+            <p className="text-base/7 text-stone-400 sm:text-sm/6">Website to vault folder</p>
           </div>
           <div className="rounded-md bg-emerald-400 px-2.5 py-1 font-mono text-sm font-medium text-neutral-950">
             ready
           </div>
         </div>
         <div className="mt-5 rounded-md bg-stone-100 p-3 text-neutral-950">
-          <p className="text-base/7 sm:text-sm/6">https://developers.cloudflare.com/browser-run/</p>
+          <p className="text-base/7 sm:text-sm/6">https://example.com/resources/</p>
         </div>
         <div className="mt-4 grid grid-cols-[1fr_auto] items-center gap-3">
           <div className="rounded-md bg-neutral-900 p-3 ring-1 ring-white/10">
             <p className="text-base/7 text-stone-300 sm:text-sm/6">Vault</p>
-            <p className="mt-1 text-base font-medium sm:text-sm">Research / Cloudflare Browser Run</p>
+            <p className="mt-1 text-base font-medium sm:text-sm">Projects / Client Research</p>
           </div>
           <div className="rounded-md bg-amber-300 px-3 py-2 text-sm font-medium text-neutral-950">
-            Crawl
+            Capture
           </div>
         </div>
       </div>
@@ -230,7 +252,7 @@ function ProductScene() {
           <div className="space-y-2 text-base/7 text-stone-400 sm:text-sm/6">
             <div className="flex items-center gap-2 text-stone-100">
               <FolderOpen className="size-4 shrink-0" />
-              Crawlbar
+              Client Research
             </div>
             {crawlPages.map((page) => (
               <div key={page} className="pl-6">
@@ -239,11 +261,11 @@ function ProductScene() {
             ))}
           </div>
           <div>
-            <p className="font-mono text-sm/6 text-emerald-300">source: cloudflare.com</p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-balance">Browser Run notes</h2>
+            <p className="font-mono text-sm/6 text-emerald-300">source: example.com</p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-balance">Client website notes</h2>
             <div className="mt-5 space-y-3 text-base/7 text-stone-300 sm:text-sm/6">
-              <p>Cloudflare Browser Run lets agents render pages, extract Markdown, and crawl sites.</p>
-              <p>Captured as local Markdown with source URLs, titles, and crawl metadata.</p>
+              <p>Captured as editable Markdown with source URLs, titles, and useful frontmatter.</p>
+              <p>Ready to link into project notes, meeting prep, and AI context.</p>
             </div>
           </div>
         </div>
@@ -252,17 +274,46 @@ function ProductScene() {
   );
 }
 
+function PositioningSection() {
+  return (
+    <section id="positioning" className="bg-stone-50 py-20 sm:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        <div className="grid gap-10 lg:grid-cols-[5fr_7fr] lg:items-start">
+          <div>
+            <p className="font-mono text-sm/6 font-medium tracking-wide text-emerald-800 uppercase">Why it exists</p>
+            <h2 className="mt-3 max-w-[15ch] text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+              Not web scraping infrastructure.
+            </h2>
+            <p className="mt-5 max-w-[54ch] text-pretty text-base/7 text-neutral-700 sm:text-sm/6">
+              Crawlbar is not trying to be an API for extracting the whole web. It is a local capture tool for turning a useful site into working notes inside your Obsidian vault.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {positioning.map((item) => (
+              <div key={item.title} className="rounded-lg bg-white p-6 shadow-sm ring-1 ring-neutral-950/8">
+                <item.icon className="size-6 stroke-emerald-700" aria-hidden="true" />
+                <h3 className="mt-5 text-xl font-semibold tracking-tight text-balance">{item.title}</h3>
+                <p className="mt-3 text-base/7 text-neutral-700 sm:text-sm/6">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Workflow() {
   return (
-    <section className="bg-stone-50 py-20 sm:py-24">
+    <section className="bg-[#f5f1e8] py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <div className="max-w-[58ch]">
           <p className="font-mono text-sm/6 font-medium tracking-wide text-emerald-800 uppercase">The workflow</p>
           <h2 className="mt-3 max-w-[14ch] text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-            From website to vault
+            From source to notes
           </h2>
           <p className="mt-5 max-w-[54ch] text-pretty text-base/7 text-neutral-700 sm:text-sm/6">
-            Crawlbar is for people who already use Obsidian as their working memory. It turns web research into files you can edit, link, search, and reuse.
+            Crawlbar is for people who already use Obsidian as their working memory. The crawl is only the first step; the real job is creating files you can use.
           </p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -281,22 +332,22 @@ function Workflow() {
 
 function ObsidianSection() {
   return (
-    <section id="obsidian" className="bg-[#f5f1e8] py-20 sm:py-24">
+    <section id="obsidian" className="bg-stone-50 py-20 sm:py-24">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[7fr_5fr] lg:items-center lg:px-10">
         <div>
           <p className="font-mono text-sm/6 font-medium tracking-wide text-emerald-800 uppercase">Obsidian first</p>
           <h2 className="mt-3 max-w-[16ch] text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-            Not a scrape. A research folder.
+            A folder, not a dump.
           </h2>
           <p className="mt-5 max-w-[60ch] text-pretty text-base/7 text-neutral-700 sm:text-sm/6">
-            Every crawl creates an index note, one Markdown file per page, and useful frontmatter for source, domain, title, and crawl date.
+            Every capture creates an index note, one Markdown file per page, and metadata that makes the source usable months later.
           </p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
             {[
-              "Obsidian-ready links",
+              "Obsidian-ready backlinks",
               "Original source URLs",
+              "Project-friendly frontmatter",
               "Optional source HTML",
-              "Attachments folder later",
             ].map((item) => (
               <div key={item} className="flex items-baseline gap-2 text-base/7 text-neutral-800 sm:text-sm/6">
                 <Check className="size-4 h-lh shrink-0 stroke-emerald-700" aria-hidden="true" />
@@ -315,18 +366,19 @@ function ObsidianSection() {
           </div>
           <pre className="overflow-hidden pt-5 font-mono text-sm/6 text-stone-300">
 {`---
-source: https://example.com/docs
+source: https://example.com/resources
 domain: example.com
 crawled: 2026-05-18
 pages: 42
+project: Client Research
 ---
 
-# Example Docs
+# Client Research Source Index
 
-- [[API Authentication]]
-- [[Rate limits]]
-- [[Webhooks]]
-- [[Changelog]]
+- [[Company overview]]
+- [[Pricing notes]]
+- [[Product changelog]]
+- [[Support docs]]
 `}
           </pre>
         </div>
@@ -342,10 +394,10 @@ function TrustSection() {
         <div>
           <p className="font-mono text-sm/6 font-medium tracking-wide text-emerald-300 uppercase">BYOC</p>
           <h2 className="mt-3 max-w-[14ch] text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-            Your account. Your vault.
+            Your engine. Your vault.
           </h2>
           <p className="mt-5 max-w-[52ch] text-pretty text-base/7 text-stone-300 sm:text-sm/6">
-            Crawlbar uses the Cloudflare Browser Run API with credentials you provide. The app stays free because it never becomes the crawling provider.
+            Crawlbar uses Cloudflare Browser Run with credentials you provide. Cloudflare handles the crawl; Crawlbar handles the local knowledge workflow.
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
@@ -360,7 +412,7 @@ function TrustSection() {
             <Cloud className="size-6 stroke-sky-300" aria-hidden="true" />
             <h3 className="mt-5 text-xl font-semibold tracking-tight">Cloudflare engine</h3>
             <p className="mt-3 text-base/7 text-stone-300 sm:text-sm/6">
-              Use Cloudflare's crawl and Markdown extraction limits directly from your own Workers plan.
+              Use Cloudflare's crawl and Markdown extraction directly from your own Workers plan.
             </p>
           </div>
           <div className="rounded-lg bg-white/6 p-6 ring-1 ring-white/10">
@@ -391,10 +443,10 @@ function UseCases() {
           <div>
             <p className="font-mono text-sm/6 font-medium tracking-wide text-emerald-800 uppercase">Use cases</p>
             <h2 className="mt-3 max-w-[14ch] text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-              Keep the useful web
+              Make sources usable
             </h2>
             <p className="mt-5 max-w-[52ch] text-pretty text-base/7 text-neutral-700 sm:text-sm/6">
-              The point is not hoarding pages. The point is making external information part of the notes, projects, and AI context you already use.
+              The point is not collecting pages. The point is making external information part of the notes, projects, and AI context you already use.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -411,7 +463,7 @@ function UseCases() {
             <div>
               <Sparkles className="size-6 stroke-amber-500" aria-hidden="true" />
               <h3 className="mt-4 max-w-[16ch] text-2xl font-semibold tracking-tight text-balance">
-                Built for a careful v1
+                Narrow on purpose
               </h3>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -436,7 +488,7 @@ function Footer() {
         <div>
           <p className="text-base font-medium text-white sm:text-sm">Crawlbar</p>
           <p className="mt-1 text-base/7 text-stone-400 sm:text-sm/6">
-            Websites to Markdown, from your menu bar.
+            Websites to Obsidian, from your menu bar.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
