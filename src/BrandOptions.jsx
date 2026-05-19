@@ -1,4 +1,5 @@
-import { ArrowRight, FileText, FolderOpen } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
+import { CrawlbarWordmark, VaultActionMark } from "./BrandMarks.jsx";
 
 const options = [
   {
@@ -83,10 +84,7 @@ function BrandOptions() {
 
 function CommandMark() {
   return (
-    <div className="font-mono text-5xl font-semibold tracking-tight sm:text-6xl">
-      <span className="text-emerald-300">/crawl</span>
-      <span className="text-stone-50">bar</span>
-    </div>
+    <CrawlbarWordmark size="display" tone="light" />
   );
 }
 
@@ -105,19 +103,6 @@ function SlashNoteMark({ compact = false }) {
           <p className="mt-2 font-mono text-sm/6 text-emerald-300">websites to Obsidian</p>
         </div>
       ) : null}
-    </div>
-  );
-}
-
-function VaultActionMark() {
-  return (
-    <div className="flex items-center gap-4">
-      <div className="font-mono text-4xl font-semibold tracking-tight text-emerald-300">/crawl</div>
-      <ArrowRight className="size-6 shrink-0 stroke-stone-400" aria-hidden="true" />
-      <div className="flex items-center gap-2 text-4xl font-semibold tracking-tight">
-        <FolderOpen className="size-8 shrink-0 stroke-amber-300" aria-hidden="true" />
-        <span>vault</span>
-      </div>
     </div>
   );
 }

@@ -17,6 +17,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
+import { CrawlbarWordmark, VaultActionMark } from "./BrandMarks.jsx";
 
 const crawlPages = [
   "Company overview",
@@ -97,10 +98,7 @@ function Header() {
     <header className="absolute inset-x-0 top-0 z-20">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10">
         <a href="#" className="flex items-center gap-2 text-base sm:text-sm">
-          <span className="flex size-7 items-center justify-center rounded-md bg-neutral-950 text-sm font-medium text-stone-50">
-            C
-          </span>
-          <span className="font-medium">Crawlbar</span>
+          <CrawlbarWordmark />
         </a>
         <div className="hidden items-center gap-7 text-sm font-medium text-neutral-700 sm:flex">
           <a className="hover:text-neutral-950" href="#obsidian">
@@ -142,8 +140,8 @@ function Hero() {
           <p className="font-mono text-sm/6 font-medium tracking-wide text-emerald-800 uppercase">
             Obsidian web capture
           </p>
-          <h1 className="mt-5 max-w-[10ch] text-balance text-6xl font-semibold tracking-tight text-neutral-950 sm:text-7xl lg:text-8xl">
-            Crawlbar
+          <h1 className="mt-5 max-w-[10ch] text-balance">
+            <CrawlbarWordmark size="hero" />
           </h1>
           <p className="mt-6 max-w-[39ch] text-pretty text-xl/8 text-neutral-700 sm:text-lg/8">
             Turn websites into structured Obsidian research folders you can search, annotate, link, and reuse.
@@ -316,14 +314,19 @@ function Workflow() {
             Crawlbar is for people who already use Obsidian as their working memory. The crawl is only the first step; the real job is creating files you can use.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {features.map((feature) => (
-            <div key={feature.title} className="rounded-lg bg-white p-6 shadow-sm ring-1 ring-neutral-950/8">
-              <feature.icon className="size-6 stroke-emerald-700" aria-hidden="true" />
-              <h3 className="mt-5 text-xl font-semibold tracking-tight text-balance">{feature.title}</h3>
-              <p className="mt-3 text-base/7 text-neutral-700 sm:text-sm/6">{feature.text}</p>
-            </div>
-          ))}
+        <div className="mt-12 grid gap-6 lg:grid-cols-[4fr_8fr] lg:items-stretch">
+          <div className="flex items-center justify-center rounded-lg bg-neutral-950 p-8 shadow-sm ring-1 ring-neutral-950/8">
+            <VaultActionMark compact />
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {features.map((feature) => (
+              <div key={feature.title} className="rounded-lg bg-white p-6 shadow-sm ring-1 ring-neutral-950/8">
+                <feature.icon className="size-6 stroke-emerald-700" aria-hidden="true" />
+                <h3 className="mt-5 text-xl font-semibold tracking-tight text-balance">{feature.title}</h3>
+                <p className="mt-3 text-base/7 text-neutral-700 sm:text-sm/6">{feature.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
