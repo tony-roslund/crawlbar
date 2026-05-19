@@ -12,6 +12,7 @@ import {
   KeyRound,
   LockKeyhole,
   Menu,
+  PanelTop,
   RefreshCcw,
   Search,
   ShieldCheck,
@@ -132,7 +133,7 @@ function Hero() {
     <section className="relative min-h-[92dvh] overflow-hidden bg-[#ece8df] pt-24 sm:pt-28">
       <Header />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(250,250,249,0.9)_0%,rgba(250,250,249,0.72)_36%,rgba(250,250,249,0)_66%)]" />
-      <div className="absolute right-[-4rem] bottom-[-2rem] w-[58rem] max-w-none opacity-95 sm:right-[-2rem] lg:right-8">
+      <div className="absolute right-[-7rem] bottom-[-1rem] z-10 w-[50rem] max-w-none opacity-95 lg:right-0 xl:right-6">
         <ProductScene />
       </div>
       <div className="relative z-10 mx-auto flex min-h-[calc(92dvh-6rem)] max-w-7xl items-center px-5 pb-20 sm:px-8 lg:px-10">
@@ -166,7 +167,7 @@ function Hero() {
           </div>
         </div>
       </div>
-      <div className="absolute inset-x-0 bottom-0 z-10 h-14 bg-stone-50" />
+      <div className="absolute inset-x-0 bottom-0 h-14 bg-stone-50" />
     </section>
   );
 }
@@ -204,70 +205,155 @@ function MobileProductScene() {
 
 function ProductScene() {
   return (
-    <div className="relative hidden aspect-[1.2] w-full sm:block" aria-hidden="true">
-      <div className="absolute top-8 right-24 left-16 rounded-t-lg bg-neutral-950 px-5 py-2 text-stone-200 shadow-2xl ring-1 ring-black/10">
-        <div className="flex items-center justify-between text-sm">
-          <div className="flex items-center gap-5">
-            <span className="font-medium">Crawlbar</span>
-            <span className="text-stone-400">File</span>
-            <span className="text-stone-400">Crawls</span>
-            <span className="text-stone-400">Vault</span>
+    <div className="relative hidden aspect-[1.28] w-full sm:block" aria-hidden="true">
+      <div className="absolute inset-x-10 top-4 rounded-t-[1.55rem] bg-neutral-950 p-2 shadow-2xl ring-1 ring-black/15">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-[1.05rem] bg-[#e6ecf4]">
+          <DesktopWallpaper />
+          <DesktopMenuBar />
+          <DesktopIcons />
+          <div className="absolute top-1 left-1/2 size-2 -translate-x-1/2 rounded-full bg-neutral-900/80 ring-1 ring-white/10" />
+          <div className="absolute right-8 bottom-5 left-8 h-9 rounded-full bg-white/24 shadow-lg ring-1 ring-white/35 backdrop-blur-md" />
+          <div className="absolute right-12 bottom-8 left-12 flex items-end justify-center gap-6">
+            <DockIcon kind="crawlbar" label="Crawlbar" />
+            <DockIcon kind="obsidian" label="Obsidian" />
+            <DockIcon kind="vault" label="Vault" />
           </div>
-          <span className="font-mono text-stone-400">18:44</span>
-        </div>
-      </div>
-      <div className="absolute top-20 right-0 w-[26rem] rounded-lg bg-neutral-950 p-4 text-stone-100 shadow-2xl ring-1 ring-white/10">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-base font-medium sm:text-sm">New capture</p>
-            <p className="text-base/7 text-stone-400 sm:text-sm/6">Website to vault folder</p>
-          </div>
-          <div className="rounded-md bg-emerald-400 px-2.5 py-1 font-mono text-sm font-medium text-neutral-950">
-            ready
-          </div>
-        </div>
-        <div className="mt-5 rounded-md bg-stone-100 p-3 text-neutral-950">
-          <p className="text-base/7 sm:text-sm/6">https://example.com/resources/</p>
-        </div>
-        <div className="mt-4 grid grid-cols-[1fr_auto] items-center gap-3">
-          <div className="rounded-md bg-neutral-900 p-3 ring-1 ring-white/10">
-            <p className="text-base/7 text-stone-300 sm:text-sm/6">Vault</p>
-            <p className="mt-1 text-base font-medium sm:text-sm">Projects / Client Research</p>
-          </div>
-          <div className="rounded-md bg-amber-300 px-3 py-2 text-sm font-medium text-neutral-950">
-            Capture
-          </div>
-        </div>
-      </div>
-      <div className="absolute top-44 right-52 w-[32rem] rounded-lg bg-[#1e1d27] p-5 text-stone-100 shadow-2xl ring-1 ring-white/10">
-        <div className="flex items-center gap-2 border-b border-white/10 pb-4">
-          <span className="size-3 rounded-full bg-red-400" />
-          <span className="size-3 rounded-full bg-amber-300" />
-          <span className="size-3 rounded-full bg-emerald-400" />
-          <span className="ml-3 text-base font-medium sm:text-sm">Obsidian</span>
-        </div>
-        <div className="grid grid-cols-[11rem_1fr] gap-5 pt-5">
-          <div className="space-y-2 text-base/7 text-stone-400 sm:text-sm/6">
-            <div className="flex items-center gap-2 text-stone-100">
-              <FolderOpen className="size-4 shrink-0" />
-              Client Research
-            </div>
-            {crawlPages.map((page) => (
-              <div key={page} className="pl-6">
-                {page}
+          <div className="absolute top-16 right-8 w-[27rem] rounded-lg bg-neutral-950 p-4 text-stone-100 shadow-2xl ring-1 ring-white/10">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-base font-medium sm:text-sm">New capture</p>
+                <p className="text-base/7 text-stone-400 sm:text-sm/6">Website to vault folder</p>
               </div>
-            ))}
+              <div className="rounded-md bg-emerald-400 px-2.5 py-1 font-mono text-sm font-medium text-neutral-950">
+                ready
+              </div>
+            </div>
+            <div className="mt-5 rounded-md bg-stone-100 p-3 text-neutral-950">
+              <p className="text-base/7 sm:text-sm/6">https://example.com/resources/</p>
+            </div>
+            <div className="mt-4 grid grid-cols-[1fr_auto] items-center gap-3">
+              <div className="rounded-md bg-neutral-900 p-3 ring-1 ring-white/10">
+                <p className="text-base/7 text-stone-300 sm:text-sm/6">Vault</p>
+                <p className="mt-1 text-base font-medium sm:text-sm">Projects / Client Research</p>
+              </div>
+              <div className="rounded-md bg-amber-300 px-3 py-2 text-sm font-medium text-neutral-950">
+                Capture
+              </div>
+            </div>
           </div>
-          <div>
-            <p className="font-mono text-sm/6 text-emerald-300">source: example.com</p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-balance">Client website notes</h2>
-            <div className="mt-5 space-y-3 text-base/7 text-stone-300 sm:text-sm/6">
-              <p>Captured as editable Markdown with source URLs, titles, and useful frontmatter.</p>
-              <p>Ready to link into project notes, meeting prep, and AI context.</p>
+          <div className="absolute top-38 right-38 w-[33rem] rounded-lg bg-[#1e1d27] p-5 text-stone-100 shadow-2xl ring-1 ring-white/10">
+            <div className="flex items-center gap-2 border-b border-white/10 pb-4">
+              <span className="size-3 rounded-full bg-red-400" />
+              <span className="size-3 rounded-full bg-amber-300" />
+              <span className="size-3 rounded-full bg-emerald-400" />
+              <span className="ml-3 text-base font-medium sm:text-sm">Obsidian</span>
+            </div>
+            <div className="grid grid-cols-[11rem_1fr] gap-5 pt-5">
+              <div className="space-y-2 text-base/7 text-stone-400 sm:text-sm/6">
+                <div className="flex items-center gap-2 text-stone-100">
+                  <FolderOpen className="size-4 shrink-0" />
+                  Client Research
+                </div>
+                {crawlPages.map((page) => (
+                  <div key={page} className="pl-6">
+                    {page}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <p className="font-mono text-sm/6 text-emerald-300">source: example.com</p>
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-balance">Client website notes</h2>
+                <div className="mt-5 space-y-3 text-base/7 text-stone-300 sm:text-sm/6">
+                  <p>Captured as editable Markdown with source URLs, titles, and useful frontmatter.</p>
+                  <p>Ready to link into project notes, meeting prep, and AI context.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div className="absolute right-6 bottom-15 left-6 h-4 rounded-t-[1.5rem] bg-linear-to-b from-zinc-200 to-zinc-400 shadow-sm ring-1 ring-black/10">
+        <div className="mx-auto h-2 w-28 rounded-b-xl bg-zinc-500/35" />
+      </div>
+      <div className="absolute right-0 bottom-5 left-0 h-11 rounded-b-[3rem] bg-linear-to-b from-zinc-300 via-zinc-200 to-zinc-400 shadow-2xl ring-1 ring-black/12">
+        <div className="mx-auto mt-1 h-5 w-48 rounded-b-2xl bg-zinc-500/18 ring-1 ring-black/5" />
+      </div>
+    </div>
+  );
+}
+
+function DesktopWallpaper() {
+  return (
+    <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.92),rgba(255,255,255,0)_34%),radial-gradient(circle_at_80%_20%,rgba(145,213,255,0.72),rgba(145,213,255,0)_34%),radial-gradient(circle_at_18%_78%,rgba(250,204,21,0.58),rgba(250,204,21,0)_28%),linear-gradient(135deg,#e9eff7_0%,#f5eee2_45%,#d7ebdf_100%)]" />
+      <div className="absolute -top-20 right-16 h-80 w-[30rem] rotate-[-18deg] rounded-[100%] bg-white/42 blur-2xl" />
+      <div className="absolute right-0 bottom-10 h-52 w-[32rem] rotate-[-10deg] rounded-[100%] bg-emerald-200/30 blur-xl" />
+    </div>
+  );
+}
+
+function DesktopMenuBar() {
+  return (
+    <div className="absolute inset-x-0 top-0 flex h-9 items-center justify-between bg-white/55 px-4 text-sm font-medium text-neutral-800 shadow-sm backdrop-blur-md">
+      <div className="flex items-center gap-4">
+        <span className="font-semibold">Crawlbar</span>
+        <span>File</span>
+        <span>Crawls</span>
+        <span>Vault</span>
+      </div>
+      <div className="flex items-center gap-3 text-neutral-700">
+        <PanelTop className="size-4 shrink-0 stroke-neutral-700" />
+        <span className="font-mono">18:44</span>
+      </div>
+    </div>
+  );
+}
+
+function DesktopIcons() {
+  return (
+    <div className="absolute top-16 left-6 grid gap-5 text-center text-sm font-medium text-neutral-800">
+      <DesktopIcon kind="obsidian" label="Obsidian" />
+      <DesktopIcon kind="vault" label="Client Research" />
+      <DesktopIcon kind="note" label="Source index" />
+    </div>
+  );
+}
+
+function DesktopIcon({ kind, label }) {
+  return (
+    <div className="w-24">
+      <div className="mx-auto flex size-14 items-center justify-center rounded-xl bg-white/70 shadow-sm ring-1 ring-black/10 backdrop-blur-md">
+        {kind === "obsidian" ? <ObsidianGlyph /> : kind === "vault" ? <FolderOpen className="size-8 stroke-amber-500" /> : <FileText className="size-8 stroke-emerald-700" />}
+      </div>
+      <p className="mt-2 text-balance drop-shadow-sm">{label}</p>
+    </div>
+  );
+}
+
+function DockIcon({ kind, label }) {
+  return (
+    <div className="flex flex-col items-center gap-2">
+      <div className="flex size-14 items-center justify-center rounded-xl bg-white/82 shadow-sm ring-1 ring-black/10">
+        {kind === "crawlbar" ? (
+          <span className="font-mono text-3xl font-semibold text-emerald-700">/</span>
+        ) : kind === "obsidian" ? (
+          <ObsidianGlyph />
+        ) : (
+          <FolderOpen className="size-8 stroke-amber-500" />
+        )}
+      </div>
+      <span className="sr-only">{label}</span>
+    </div>
+  );
+}
+
+function ObsidianGlyph() {
+  return (
+    <div className="relative size-9">
+      <div className="absolute inset-x-2 top-0 h-8 rotate-12 rounded-[0.55rem] bg-violet-500 shadow-sm" />
+      <div className="absolute top-2 right-0 h-7 w-6 rotate-[-18deg] rounded-[0.45rem] bg-purple-700" />
+      <div className="absolute bottom-0 left-1 h-6 w-6 rotate-[-28deg] rounded-[0.45rem] bg-indigo-500" />
+      <div className="absolute inset-2 rounded-[0.45rem] bg-white/18" />
     </div>
   );
 }
